@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Website</title>
+</head>
+<body>
+    <%- include("partials/header.ejs") %>
+
+    <div class="wrapper">
+        <div class="sidebar">
+            <%- include("partials/sidemenu.ejs") %>
+        </div>
+
+        <div class="newsbar">
+            <h1>Search Results</h1>
+            <div class="news">
+                <% if (articles != null) {%>
+                <% articles.forEach(function(article, index){ %>
+                    <% if(article.title != "[Removed]"){ %>
+                        <a href="/article/<%- article.title %>" class="news__card">
+                            <img src="<%-article.urlToImage%>" alt="">
+                            <h2><%- article.title %></h2>
+                            <p><%- article.description%></p>
+                        </a>
+                    <% } %>
+                <% }) %> 
+                <% } else{ %>
+                    No posts found
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <%- include("partials/footer.ejs") %>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Website</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header__logo">News Page</div>
+        <div class="header__search">Search</div>
+    </header>
+
+    <div class="wrapper-article">
+        <div class="news-article">
+            <a href="/">&larr; Back</a>
+            <% if(article[0] != null){ %>
+                <h2><%- article[0].title %></h2>
+                <% if(article[0].author){ %>
+                    <p class="author"><em style="color: #000; font-weight: 400;">by</em> <%= article[0].author %></p>
+                <% } %>
+                <% if(article[0].source.name){ %>
+                    <p> <span style="text-decoration: underline;">SOURCE</span>: <strong><%= article[0].source.name %></strong></p>
+                <% } %>
+                <p><%- article[0].description%></p>
+                <p><%- article[0].content%></p>
+                <a href="<%- article[0].url %>">Read full article</a>
+            <% }else{ %>
+                No posts found
+            <% } %>
+        </div>
+    </div>
+    
+</body>
+</html>
